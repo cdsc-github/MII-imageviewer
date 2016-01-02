@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- XML Definition of servers running MIRC which are available for querying -->
+
+<mircServers>
+  <server name="RSNA MIRC Site" url="http://mirc.rsna.org/mircstorage/service"/>
+  <server name="CMH:General Pediatric Radiology Cases" url="http://mirc.childrensmemorial.org/general/service"/>
+  <server name="CMH:Fourth Year Board Review Cases" url="http://mirc.childrensmemorial.org/Boards/service"/>
+  <server name="CMH:Emergency Radiology" url="http://mirc.childrensmemorial.org/emergency/service"/>
+  <server name="CMH:Chest and Airway" url="http://mirc.childrensmemorial.org/chest/service"/>
+  <server name="CMH:Cardiovascular" url="http://mirc.childrensmemorial.org/cardiovascular/service"/>
+  <server name="CMH:Musculoskeletal" url="http://mirc.childrensmemorial.org/musculoskeletal/service"/>
+  <server name="CMH:GI tract" url="http://mirc.childrensmemorial.org/GI/service"/>
+  <server name="CMH:GU tract" url="http://mirc.childrensmemorial.org/GU/service"/>
+  <server name="CMH:Neuroradiology" url="http://mirc.childrensmemorial.org/Neuroradiology/service"/>
+  <server name="CMH:Pediatric Oncology" url="http://mirc.childrensmemorial.org/oncology/service"/>
+  <server name="CMH:Intensive Care Units" url="http://mirc.childrensmemorial.org/ICU/service"/>
+  <server name="CMH:Systemic Diseases and Syndromes" url="http://mirc.childrensmemorial.org/syndromes/service"/>
+</mircServers>

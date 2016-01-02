@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<plugins>
+  <plugin classname="imageviewer.tools.plugins.ActiveContourTool"/>
+<!--  <plugin classname="imageviewer.tools.plugins.MagicWandTool"/> -->
+  <plugin classname="imageviewer.tools.plugins.fp.FrontPropagationTool"/>
+	<pluginDirectory path=""/>
+</plugins>
+  

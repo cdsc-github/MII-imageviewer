@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layoutDefinitions>
+
+  <layoutFiles>
+	
+	  <!-- Layouts for 1024 x 768 screens -->
+
+	  <file name="config/layouts/1024x768/singleTile.xml"/>
+	  <file name="config/layouts/1024x768/largeGrid.xml"/>
+	  <file name="config/layouts/1024x768/smallGrid.xml"/>
+	  <file name="config/layouts/1024x768/largeOverview.xml"/>
+	  <file name="config/layouts/1024x768/continuousOverview.xml"/>
+	  <file name="config/layouts/1024x768/smallOverview.xml"/>
+	  <file name="config/layouts/1024x768/multiOverview.xml"/>
+
+		<!-- Layouts for 1280 x 1024 screens -->
+
+	  <file name="config/layouts/1280x1024/singleTile.xml"/>
+	  <file name="config/layouts/1280x1024/largeGrid.xml"/>
+	  <file name="config/layouts/1280x1024/smallGrid.xml"/>
+	  <file name="config/layouts/1280x1024/largeOverview.xml"/>
+	  <file name="config/layouts/1280x1024/continuousOverview.xml"/>
+	  <file name="config/layouts/1280x1024/smallOverview.xml"/>
+	  <file name="config/layouts/1280x1024/multiOverview.xml"/>
+
+		<!-- Layouts for 1400 x 1050 screens -->
+
+	  <file name="config/layouts/1400x1050/singleTile.xml"/>
+		<file name="config/layouts/1400x1050/largeGrid.xml"/>
+		<file name="config/layouts/1400x1050/smallGrid.xml"/>
+		<file name="config/layouts/1400x1050/largeOverview.xml"/>
+		<file name="config/layouts/1400x1050/continuousOverview.xml"/>
+		<file name="config/layouts/1400x1050/smallOverview.xml"/>
+		<file name="config/layouts/1400x1050/multiOverview.xml"/>
+
+	  <!-- Layouts for 1600 x 1200 screens -->
+
+	  <file name="config/layouts/1600x1200/singleTile.xml"/>
+	  <file name="config/layouts/1600x1200/largeGrid.xml"/>
+		<file name="config/layouts/1600x1200/smallGrid.xml"/>
+		<file name="config/layouts/1600x1200/largeOverview.xml"/>
+		<file name="config/layouts/1600x1200/continuousOverview.xml"/>
+		<file name="config/layouts/1600x1200/smallOverview.xml"/>
+		<file name="config/layouts/1600x1200/multiOverview.xml"/>
+
+  </layoutFiles>
+
+	<!-- Layout processing is based on examining each individual study;
+	     or failing that, a given collection of series, and finally, a
+	     single series, all to determine what to do. The examination of
+	     multiple series (or a study) is to figure out if a given mixed
+	     series display should be selected (e.g., a scout image with a
+	     given cross-sectional.-->
+
+	<layoutRules>
+
+	  <compositionRule class="imageviewer.ui.layout.rules.CTPETOverlayRule" isInitiallyEnabled="true"/>
+
+	  <groupingRule type="series" class="imageviewer.ui.layout.rules.ScoutRule" isInitiallyEnabled="true"/>
+	  <groupingRule type="study" class="imageviewer.ui.layout.rules.ImmediatePriorRule" isInitiallyEnabled="true"/>
+		
+	  <!-- Layout rules are used to select an initial layout based on a
+	       given image series' (or study) properties. Characteristics
+	       such as the current screen resolution (based on start up),
+	       the modality, the physician, the image size(s), the number of
+	       images, etc. Names referenced must exist in one of the about
+	       layout files. Rule preferences are based on order as appears
+	       in this file. -->
+
+	  <rule name="single" selectedLayout="Single tile">
+			<conditional name="modality" operation="EQ" value="CR"/>
+			<conditional name="number_images" operation="EQ" value="1"/>
+		</rule>
+
+		<rule name="single" selectedLayout="Large overview">
+		  <logicalOp opName="AND">
+			  <conditional name="modality" operation="EQ" value="CT"/>
+			  <conditional name="description" operation="contains" value="KUB"/>
+			</logicalOp>
+		</rule>
+
+	  <rule name="pet" selectedLayout="Small grid"><conditional name="modality" operation="EQ" value="PT"/></rule>
+	  <rule name="ultrasound" selectedLayout="Large grid"><conditional name="modality" operation="EQ" value="US"/></rule>
+	  <rule name="ct" selectedLayout="Large grid"><conditional name="modality" operation="EQ" value="CT"/></rule>
+
+		<!-- When all else fails, use the default layout -->
+		
+		<defaultLayout name="Small grid"/>
+  </layoutRules>
+</layoutDefinitions>

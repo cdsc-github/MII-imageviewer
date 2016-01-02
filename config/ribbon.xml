@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<ribbon>
+  <task name="Home" isInitiallyEnabled="true">
+
+		<band name="Session" icon="resources/icons/ribbon/32x32/Folder.png" expandAction="Preferences">
+			<galleryButton name="Open" icon="resources/icons/ribbon/32x32/Folder.png" alternateIcon="resources/icons/ribbon/16x16/open.png" 
+										 functionName="Open" priority="TOP" isInitiallyEnabled="true" shortcut="ctrl O"/>
+			<galleryButton name="Save" icon="resources/icons/ribbon/32x32/Save.png" alternateIcon="resources/icons/ribbon/16x16/save.png" 
+										 functionName="Save" priority="LOW" isInitiallyEnabled="false" shortcut="ctrl S"/>
+			<eventListener class="imageviewer.ui.UserManager">
+				<ribbonFlipButton priority="LOW">
+					<galleryButton name="Login" icon="resources/icons/ribbon/32x32/User.png" 
+												 functionName="Login" priority="LOW" isInitiallyEnabled="true"/>
+					<galleryButton name="Logout" icon="resources/icons/ribbon/32x32/User.png" 
+												 functionName="Logout" priority="LOW" isInitiallyEnabled="false"/>
+				</ribbonFlipButton>
+			</eventListener>
+		</band>
+
+		<band name="Edit"  icon="resources/icons/ribbon/32x32/paste.png">
+			<galleryButton name="Paste" icon="resources/icons/ribbon/32x32/paste.png" alternateIcon="resources/icons/ribbon/16x16/paste.png" hasGallery="true" 
+										 functionName="Paste" priority="LOW" isInitiallyEnabled="false"/>
+			<galleryButton name="Cut" icon="resources/icons/ribbon/32x32/cut.png" alternateIcon="resources/icons/ribbon/16x16/cut.png"
+										 functionName="Cut" priority="LOW" isInitiallyEnabled="false" isToggle="false"/>
+			<galleryButton name="Copy" icon="resources/icons/ribbon/32x32/copy.png" alternateIcon="resources/icons/ribbon/16x16/copy.png"
+										 functionName="Copy" priority="LOW" isInitiallyEnabled="false"/>
+			<galleryButton name="Undo" icon="resources/icons/ribbon/32x32/undo.png" alternateIcon="resources/icons/ribbon/16x16/undo.png"
+										 functionName="Undo" priority="TOP" isInitiallyEnabled="false" shortcut="ctrl Z"/>
+			<galleryButton name="Redo" icon="resources/icons/ribbon/32x32/redo.png" alternateIcon="resources/icons/ribbon/16x16/redo.png"
+										 functionName="Redo" priority="TOP" isInitiallyEnabled="false" shortcut="ctrl Y"/>
+		</band>
+
+		<band name="Basic Tools" icon="resources/icons/ribbon/32x32/tools.png">
+			<eventListener class="imageviewer.tools.ToolManager">
+				<galleryButton name="Select" icon="resources/icons/ribbon/32x32/select.png" alternateIcon="resources/icons/ribbon/16x16/pointer.png"
+											 priority="TOP" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools"/>
+				<galleryMultiButton priority="MEDIUM" popupType="LARGE" popupMaximumWidth="250">
+					<galleryButton name="Window level" icon="resources/icons/ribbon/32x32/windowLevel.png" functionName="Window/level" alternateIcon="resources/icons/ribbon/16x16/windowLevel.png"
+												 priority="MEDIUM" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools" extraText="Manually control window and level settings"/>
+					<galleryButton name="Auto adjust" icon="resources/icons/ribbon/32x32/windowLevelAuto.png" functionName="Auto window/level" alternateIcon="resources/icons/ribbon/16x16/windowLevel.png"
+												 priority="MEDIUM" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools" extraText="Automatically set window/level based on selected image's histogram"/>
+					<galleryButton name="Lung setting" icon="resources/icons/ribbon/32x32/windowLevel.png" functionName="Lung setting" alternateIcon="resources/icons/ribbon/16x16/windowLevel.png"
+												 priority="MEDIUM" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools" extraText="Apply default lung window/level"/>
+					<galleryButton name="Bone setting" icon="resources/icons/ribbon/32x32/windowLevel.png" functionName="Bone setting" alternateIcon="resources/icons/ribbon/16x16/windowLevel.png"
+												 priority="MEDIUM" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools" extraText="Apply default bone window/level"/>
+					<galleryButton name="Liver setting" icon="resources/icons/ribbon/32x32/windowLevel.png" functionName="Liver setting" alternateIcon="resources/icons/ribbon/16x16/windowLevel.png"
+												 priority="MEDIUM" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools" extraText="Apply default liver window/level"/>
+					<galleryButton name="Spine setting" icon="resources/icons/ribbon/32x32/windowLevel.png" functionName="Spine setting" alternateIcon="resources/icons/ribbon/16x16/windowLevel.png"
+												 priority="MEDIUM" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools" extraText="Apply default MR spine window/level"/>
+					<galleryButton name="Soft tissue setting" icon="resources/icons/ribbon/32x32/windowLevel.png" functionName="Soft tissue setting" 
+												 alternateIcon="resources/icons/ribbon/16x16/windowLevel.png" priority="MEDIUM" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools"
+												 extraText="Apply default soft tissue window/level"/>
+				</galleryMultiButton>
+
+				<galleryButton name="Zoom" icon="resources/icons/ribbon/32x32/zoom.png" alternateIcon="resources/icons/ribbon/16x16/zoom.png"
+											 priority="LOW" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools"/>
+
+				<eventListener class="imageviewer.tools.MagicLensTool">
+					<popupPanel>
+						<command name="Small magnification region" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="magnifiedRegionSize"/>
+						<command name="Medium magnification region" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="magnifiedRegionSize" isDefault="true"/>
+						<command name="Large magnification region" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="magnifiedRegionSize"/>
+						<separator/>
+						<command name="2x magnification" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="magnificatonLevel" isDefault="true"/>
+						<command name="4x magnification" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="magnificatonLevel"/>
+						<command name="6x magnification" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="magnificatonLevel"/>
+						<command name="8x magnification" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="magnificatonLevel"/>
+						<separator/>
+						<command name="Fixed lens location" toggleType="checkbox" isInitiallyEnabled="true"/>
+						<command name="Highlight magnified region" toggleType="checkbox" isInitiallyEnabled="true"/>
+					</popupPanel>
+					<galleryButton name="Magnifier" icon="resources/icons/ribbon/32x32/magicLens.png" hasGallery="true" functionName="Magnifier" alternateIcon="resources/icons/ribbon/16x16/magicLens.png"
+												 priority="LOW" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools"/>
+				</eventListener>
+
+				<galleryButton name="Cine" icon="resources/icons/ribbon/32x32/cine2.png" alternateIcon="resources/icons/ribbon/16x16/cine.png"
+											 priority="MEDIUM" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools"/>
+				<galleryButton name="Rotate" icon="resources/icons/ribbon/32x32/rotate.png" alternateIcon="resources/icons/ribbon/16x16/rotate.png"
+											 priority="LOW" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools"/>
+				<galleryButton name="Flip vertical" icon="resources/icons/ribbon/32x32/flipVertical.png" alternateIcon="resources/icons/ribbon/16x16/flipVertical.png"
+											 priority="LOW" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools"/>
+				<galleryButton name="Flip horizontal" icon="resources/icons/ribbon/32x32/flipHorizontal.png" alternateIcon="resources/icons/ribbon/16x16/flipHorizontal.png"
+											 priority="LOW" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools"/>
+				<galleryButton name="Pan" icon="resources/icons/ribbon/32x32/pan.png" alternateIcon="resources/icons/ribbon/16x16/pan.png"
+											 priority="LOW" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools"/>
+				<galleryButton name="Reset" icon="resources/icons/ribbon/32x32/reset.png" functionName="Reset image" alternateIcon="resources/icons/ribbon/16x16/reset.png"
+											 priority="LOW" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools"/>
+			</eventListener>
+		</band>
+		<band name="Measure" icon="resources/icons/ribbon/32x32/measure.png">
+			<eventListener class="imageviewer.tools.ToolManager">
+				<galleryButton name="Ruler" icon="resources/icons/ribbon/32x32/ruler.png" alternateIcon="resources/icons/ribbon/16x16/ruler.png"
+											 priority="MEDIUM" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools"/>
+				<galleryButton name="Histogram" icon="resources/icons/ribbon/32x32/histogram.png" functionName="Region histogram" alternateIcon="resources/icons/ribbon/16x16/histogram.png"
+											 priority="LOW" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools"/>
+				<galleryButton name="Pixel readout" icon="resources/icons/ribbon/32x32/eyedropper.png" alternateIcon="resources/icons/ribbon/16x16/eyedropper.png"
+											 priority="LOW" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools"/>
+				<galleryButton name="Area" icon="resources/icons/ribbon/32x32/triangle.png" functionName="Regional histogram" alternateIcon="resources/icons/ribbon/16x16/triangle.png"
+											 priority="LOW" isInitiallyEnabled="true" isToggle="true" buttonGroup="imageTools"/>
+			</eventListener>
+		</band>
+		<band name="Annotate" icon="resources/icons/ribbon/32x32/InkBallpointPen.png">
+			<eventListener class="imageviewer.tools.ToolManager">
+				<panel layout="rows" rows="3" hasLeftSeparator="false" hasRightSeparator="true" priority="MEDIUM">
+					<buttonStrip>
+						<stripButton name="Line" icon="resources/icons/ribbon/16x16/line.png" isToggle="true" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+						<stripButton name="Arrow" icon="resources/icons/ribbon/16x16/arrow.png" isToggle="true" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+						<stripButton name="Box" icon="resources/icons/ribbon/16x16/rectangle.png" isToggle="true" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+						<stripButton name="Ellipse" icon="resources/icons/ribbon/16x16/circle.png" isToggle="true" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+						<stripButton name="Polygon" icon="resources/icons/ribbon/16x16/hexagon.png" isToggle="true" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+						<stripButton name="Polyline" icon="resources/icons/ribbon/16x16/polyline.png" isToggle="true" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+						<stripButton name="Freehand curve" icon="resources/icons/ribbon/16x16/freehandLine.png" isToggle="true" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+						<stripButton name="Text" icon="resources/icons/ribbon/16x16/text.png" isToggle="true" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+					</buttonStrip>
+					<buttonStrip>
+						<stripButton name="Align left" icon="resources/icons/ribbon/16x16/alignLeft.png" isToggle="false" isInitiallyEnabled="true" />
+						<stripButton name="Align middle" icon="resources/icons/ribbon/16x16/alignMiddle.png" isToggle="false" isInitiallyEnabled="true"/>
+						<stripButton name="Align right" icon="resources/icons/ribbon/16x16/alignRight.png" isToggle="false" isInitiallyEnabled="true"/>
+						<stripButton name="Align top" icon="resources/icons/ribbon/16x16/alignTop.png" isToggle="false" isInitiallyEnabled="true"/>
+						<stripButton name="Align center" icon="resources/icons/ribbon/16x16/alignCenter.png" isToggle="false" isInitiallyEnabled="true"/>
+						<stripButton name="Align bottom" icon="resources/icons/ribbon/16x16/alignBottom.png" isToggle="false" isInitiallyEnabled="true"/>
+					</buttonStrip>
+					<buttonStrip>
+						<stripButton name="Group" icon="resources/icons/ribbon/16x16/group.png" isToggle="false" isInitiallyEnabled="true" />
+						<stripButton name="Ungroup" icon="resources/icons/ribbon/16x16/ungroup.png" isToggle="false" isInitiallyEnabled="true" />
+					</buttonStrip>
+					<buttonStrip>
+						<stripButton name="Distribute horizontally" icon="resources/icons/ribbon/16x16/distributeHorizontal.png" isToggle="false" isInitiallyEnabled="true" />
+						<stripButton name="Distribute vertically" icon="resources/icons/ribbon/16x16/distributeVertically.png" isToggle="false" isInitiallyEnabled="true" />
+					</buttonStrip>
+					<buttonStrip>
+						<stripButton name="Fill color" icon="resources/icons/ribbon/16x16/fill.png" isToggle="false" popupType="colorPanel" isInitiallyEnabled="true" />
+					</buttonStrip>
+					<buttonStrip>
+						<stripButton name="Line color" icon="resources/icons/ribbon/16x16/lineColor.png" isToggle="false" popupType="colorPanel" isInitiallyEnabled="true" />
+					</buttonStrip>
+					<buttonStrip>
+						<stripButton name="Move to front" icon="resources/icons/ribbon/16x16/moveToFront.png" isToggle="false" isInitiallyEnabled="true" />
+						<stripButton name="Move to back" icon="resources/icons/ribbon/16x16/moveToBack.png" isToggle="false" isInitiallyEnabled="true" />
+						<stripButton name="Move forward" icon="resources/icons/ribbon/16x16/moveForward.png" isToggle="false" isInitiallyEnabled="true" />
+						<stripButton name="Move backward" icon="resources/icons/ribbon/16x16/moveBackward.png" isToggle="false" isInitiallyEnabled="true" />
+					</buttonStrip>
+				</panel>
+			</eventListener>
+		</band>
+		<band name="Display" icon="resources/icons/ribbon/32x32/system.png">
+			<eventListener class="imageviewer.ui.ViewManager">
+				<gallery smallWidth="1" mediumWidth="2" largeWidth="3">
+					<galleryButton name="Single tile" icon="resources/icons/ribbon/32x32/singleTileLayout.png" isInitiallyEnabled="true" checkStatus="true"/>
+					<galleryButton name="Large grid" icon="resources/icons/ribbon/32x32/largeGridLayout.png" isInitiallyEnabled="true" checkStatus="true"/>
+					<galleryButton name="Small grid" icon="resources/icons/ribbon/32x32/smallGridLayout.png" isInitiallyEnabled="true" checkStatus="true"/>
+					<galleryButton name="Continuous overview" icon="resources/icons/ribbon/32x32/continuousOverview.png" isInitiallyEnabled="true" checkStatus="true"/>
+					<galleryButton name="Large overview" icon="resources/icons/ribbon/32x32/largeOverview.png" isInitiallyEnabled="true" checkStatus="true"/>
+					<galleryButton name="Small overview" icon="resources/icons/ribbon/32x32/smallOverview.png" isInitiallyEnabled="true" checkStatus="true"/>
+				</gallery>
+				<galleryButton name="Presentation states" icon="resources/icons/ribbon/32x32/camera.png" functionName="Display presentation states" alternateIcon="resources/icons/ribbon/16x16/camera.png"
+											 priority="LOW" isInitiallyEnabled="true" isToggle="true"/>
+				<galleryButton name="Show grid" icon="resources/icons/ribbon/32x32/ViewGridlines.png" functionName="Display grid" alternateIcon="resources/icons/ribbon/16x16/grid.png"
+											 priority="LOW" isInitiallyEnabled="true" isToggle="true"/>
+			</eventListener>
+		</band>
+	</task>
+	<task name="View" isInitiallyEnabled="true">
+		<eventListener class="imageviewer.ui.ViewManager">
+			<band name="Properties"  icon="resources/icons/ribbon/32x32/paste.png">
+				<panel layout="grid" hasLeftSeparator="false" hasRightSeparator="true" priority="MEDIUM">
+					<checkbox name="Display image information" isInitiallySelected="true"/>
+					<checkbox name="Display image property window" isInitiallySelected="false"/>
+					<checkbox name="Display partial panels" isInitiallySelected="true"/>
+				</panel>
+			</band>
+		</eventListener>
+	</task>
+</ribbon>

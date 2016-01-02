@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<toolbar>
+  <button functionName="Open"/>
+  <button functionName="Save"/>
+	<separator/>
+	<button functionName="Undo"/>
+	<button functionName="Redo"/>
+	<button functionName="Cut"/>
+	<button functionName="Copy"/>
+	<button functionName="Paste"/>
+	<separator/>
+	<multiButton showText="false">
+	  <button functionName="Single tile"/>
+	  <button functionName="Large grid"/>
+	  <button functionName="Small grid"/>
+	  <button functionName="Continuous overview"/>
+	  <button functionName="Large overview"/>
+	  <button functionName="Small overview"/>
+	  <button functionName="Multi overview"/>
+	</multiButton>
+	<separator/>
+	<button functionName="Select"/>
+	<multiButton showText="false">
+	  <button functionName="Window/level"/>
+	  <button functionName="Auto window/level"/>
+	  <button functionName="Lung Setting"/>
+	  <button functionName="Bone Setting"/>
+	  <button functionName="Soft Tissue Setting"/>
+  </multiButton>
+	<button functionName="Cine"/>
+	<button functionName="Pan"/>
+	<multiButton showText="false">
+	  <button functionName="Rotate"/>
+	  <button functionName="Flip horizontal"/>
+	  <button functionName="Flip vertical"/>
+  </multiButton>
+	<multiButton>
+	  <button functionName="Zoom"/>
+	  <button functionName="Magnifier"/>
+	</multiButton>
+	<button functionName="Reset image"/>
+	<separator/>
+	<multiButton showText="false">
+	  <button functionName="Line"/>
+	  <button functionName="Arrow"/>
+	  <button functionName="Box"/>
+	  <button functionName="Ellipse"/>
+	  <button functionName="Polygon"/>
+	  <button functionName="Polyline"/>
+	  <button functionName="Freehand curve"/>
+	  <button functionName="Text"/>
+	  <button functionName="Mark image"/>
+  </multiButton>
+	<separator/>
+	<button functionName="Ruler"/>
+	<button functionName="Region histogram"/>
+	<separator/>
+	<button functionName="Display presentation states"/>
+</toolbar>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<setup title="Configure ImageViewer">
+<prompt question="Enter the local archive node NAME [default is @default.node.name@] : "  defaultvalue="@default.node.name@" resultproperty="node.name" />
+<prompt question="Set the local archive node DISPLAY name [default is @default.node.name@] : " defaultvalue="@default.node.name@" resultproperty="set.display.name" /> 
+<prompt question="Set the AETITLE for this node [default is @default.node.aetitle@] : " defaultvalue="@default.node.aetitle@" resultproperty="node.aetitle" />
+<prompt question="Enter the image storage directory [default is @default.image.dir@] : " defaultvalue="@default.image.dir@" resultproperty="storage.directory" />
+<prompt question="Enter the file extension for image files [default is @default.file.extension@] : " defaultvalue="@default.file.extension@" resultproperty="file.extension" />
+<prompt question="Enter the port number on which this local archive runs [default is @default.local.archive.port@] : " defaultvalue="@default.local.archive.port@" resultproperty="local.archive.port" />
+<prompt question="Enter the name for this PACS node cluster [default is @default.pacs.cluster@] : " defaultvalue="@default.pacs.cluster@" resultproperty="cluster.name" />
+<prompt question="Enter the IP address of the open PACS gateway (no default) : " defaultvalue="" resultproperty="gateway.ipaddress" />
+<prompt question="Enter the gateway port [default is @default.gateway.port@] : " defaultvalue="@default.gateway.port@" resultproperty="gateway.port" />
+<prompt question="Can this node perform a MOVE [y,n] : " defaultvalue="y" resultproperty="node.can.move" />
+<prompt question="Can this node perform an ECHO [y,n] : " defaultvalue="y" resultproperty="node.can.echo" />
+<prompt question="Is this node a MOVETARGET [y,n] : " defaultvalue="y" resultproperty="node.can.movetarget" />
+<prompt question="Can this node perform a MOVESOURCE [y,n] : " defaultvalue="y" resultproperty="node.can.movesource" />
+</setup>

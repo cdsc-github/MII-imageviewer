@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<imageViewer>
+
+  <!-- Specify the general runtime properties of imageViewer,
+	     including the amount of undo support, maximum memory amount
+	     before warnings, and the size of the image cache (number of
+	     entries) -->
+
+  <generalProperties>
+
+    <property name="MEMORY_THRESHOLD" type="java.lang.Float" value="0.7"/>               <!-- Control the starting point for the heap size percent -->
+    <property name="MAXIMUM_MEMORY_THRESHOLD" type="java.lang.Float" value="0.8"/>       <!-- Upper limit of heap size percentage filled for cache emptying -->
+	  <property name="DEFAULT_IMAGE_CACHE_SIZE" type="java.lang.Integer" value="256"/>     <!-- Maximum size of the number of entries in the cache -->
+	  <property name="UNDO_LEVEL" type="java.lang.Integer" value="15"/>                    <!-- Maximum number of undos to remember -->
+	  <property name="DISPLAY_PARTIAL_PANELS" type="java.lang.Boolean" value="true"/>      <!-- Whether data panel area that is partially obscure is hidden -->
+
+  </generalProperties>
+
+	<imageServerProperties>
+    <property name="IMAGESERVER_GATEWAY_CONFIG" type="java.lang.String" value="resources/server/aeonGatewayConfig.xml"/>
+    <property name="IMAGESERVER_CLIENT_NODE"    type="java.lang.String" value="resources/server/aeonNodeConfig.xml" />
+	  <property name="LOCAL_ARCHIVE_UPDATE_PATH" type="java.lang.String" value=""/>
+		<property name="USE_XML_COMPRESSION" type="java.lang.Boolean" value="true"/>
+		<property name="USE_IMAGE_COMPRESSION" type="java.lang.Boolean" value="true"/>
+	</imageServerProperties>
+
+	<!-- Specify the location of the configuration files that will be
+	     read by the imageviewer classes. This will override whatever the
+			 default might be hardcoded as. -->
+
+	<configFileLocations>
+	  <property name="CONFIG_LAYOUTS" type="java.lang.String" value="config/layouts.xml"/>
+	  <property name="CONFIG_MENUS" type="java.lang.String" value="config/menus.xml"/>
+	  <property name="CONFIG_TOOLBAR" type="java.lang.String" value="config/toolbar.xml"/> 
+		<property name="CONFIG_RIBBON" type="java.lang.String" value="config/ribbon.xml"/>
+	  <property name="CONFIG_PIPELINE" type="java.lang.String" value="config/pipeline.xml"/>
+	  <property name="CONFIG_PLUGINS" type="java.lang.String" value="config/plugins.xml"/>
+	  <property name="CONFIG_WINDOW_LEVEL" type="java.lang.String" value="config/windowLevel.xml"/>
+  </configFileLocations>
+
+	<!-- Plugin file locations (not individual configuration) -->
+
+	<pluginConfigFileLocations>
+	  <property name="PLUGIN_CONFIG_ACTIVE_CONTOUR" type="java.lang.String" value="config/plugins/activeContourPlugin.xml"/>
+	  <property name="PLUGIN_CONFIG_LIDC_ANNOTATION" type="java.lang.String" value="config/plugins/lidcAnnotationPlugin.xml"/>
+	  <property name="PLUGIN_CONFIG_MAGIC_WAND" type="java.lang.String" value="config/plugins/magicWandPlugin.xml"/>
+	</pluginConfigFileLocations>
+
+	<!-- Default tool and visual properties should be stated here. -->
+
+	<toolProperties>
+	  <property name="DISPLAY_GRID" type="java.lang.Boolean" value="false"/>
+	  <property name="DISPLAY_IMAGE_INFORMATION" type="java.lang.Boolean" value="true"/>
+<!--	  <property name="DISPLAY_IMAGE_PROP_WINDOW" type="java.lang.Boolean" value="false"/>
+	  <property name="DISPLAY_PRESENTATION_STATES" type="java.lang.Boolean" value="false"/> -->
+  </too
+</imageViewer>
+

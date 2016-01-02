@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<menu name="Front propagation">
+	<eventListener class="imageviewer.tools.plugins.fp.FrontPropagationTool">
+    <command name="Select region" toggleType="radiobutton" useMenuIcon="false" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+		<separator/>
+		<command name="Set threshold..." toggleType="none" isInitiallyEnabled="true" buttonGroup=""/>
+  </eventListener>
+</menu>
+

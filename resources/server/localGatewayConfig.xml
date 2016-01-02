@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This is what a typical client node appearing on the scene would know -->
+
+<clientConfig>
+  <gateway ipAddress="renegade" port="8081"/>
+  <cluster name="ITM">
+	  <addPACSNode name="default" displayName="Localhost" ipAddress="localhost" port="5050" aeTitle="" url="" concurrency="1" retry="">
+		  <capability name="move" 		functionGroup="socket"/>
+			<capability name="echo" 		functionGroup="socket"/>		
+			<capability name="moveTarget" functionGroup="socket"/>
+			<capability name="moveSource" functionGroup="socket"/>		
+		</addPACSNode>
+  </cluster>
+</clientConfig>

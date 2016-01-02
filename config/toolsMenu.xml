@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<menu name="Tools" shortcut="T">
+  <eventListener class="imageviewer.tools.ToolManager">
+	  <command name="Select" icon="resources/icons/toolbar/select.png" toggleType="radiobutton" useMenuIcon="false" isInitiallyEnabled="true" buttonGroup="imageTools" isDefault="true"/>
+		<separator/>
+    <command name="Window/level" icon="resources/icons/toolbar/windowLevel.png" shortcut="ctrl W" toggleType="radiobutton" useMenuIcon="false" 
+						 isInitiallyEnabled="true" buttonGroup="imageTools"/>
+	  <command name="Auto window/level" icon="resources/icons/toolbar/autoWindowLevel.png" toggleType="radiobutton" useMenuIcon="false" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+	  <command name="Lung Setting" icon="resources/icons/ribbon/16x16/windowLevel.png" toggleType="radiobutton" useMenuIcon="false" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+	  <command name="Bone Setting" icon="resources/icons/ribbon/16x16/windowLevel.png" toggleType="radiobutton" useMenuIcon="false" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+	  <command name="Soft Tissue Setting" icon="resources/icons/ribbon/16x16/windowLevel.png" functionName="Soft tissue setting" toggleType="radiobutton" useMenuIcon="false" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+
+	  <command name="Cine" icon="resources/icons/toolbar/cine.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="false" buttonGroup="imageTools"/>
+		<command name="Zoom" icon="resources/icons/toolbar/zoom.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="false" buttonGroup="imageTools"/>
+		<separator/>
+		<menu name="Magnifying glass">
+		  <eventListener class="imageviewer.tools.MagicLensTool">
+		    <command name="Magnifier" icon="resources/icons/toolbar/magnifyingGlass.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+				<separator/>
+				<command name="Small magnification region" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="magnifiedRegionSize"/>
+				<command name="Medium magnification region" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="magnifiedRegionSize" isDefault="true"/>
+				<command name="Large magnification region" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="magnifiedRegionSize"/>
+				<separator/>
+				<command name="2x magnification" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="magnificatonLevel" isDefault="true"/>
+				<command name="4x magnification" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="magnificatonLevel"/>
+				<command name="6x magnification" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="magnificatonLevel"/>
+				<command name="8x magnification" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="magnificatonLevel"/>
+				<separator/>
+				<command name="Fixed lens location" toggleType="checkbox" isInitiallyEnabled="true" buttonGroup=""/>
+				<command name="Highlight magnified region" toggleType="checkbox" isInitiallyEnabled="true" buttonGroup=""/>
+			</eventListener>
+		</menu>
+		<separator/>
+		<command name="Pan"  icon="resources/icons/toolbar/pan.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+		<command name="Rotate" icon="resources/icons/toolbar/rotate.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+		<command name="Flip vertical" icon="resources/icons/toolbar/flipVertical.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+		<command name="Flip horizontal" icon="resources/icons/toolbar/flipHorizontal.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+		<separator/>
+		<menu name="Annotations">
+		  <command name="Line" icon="resources/icons/toolbar/annotation/line.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+			<command name="Arrow" icon="resources/icons/toolbar/annotation/arrow.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+			<command name="Box" icon="resources/icons/toolbar/annotation/box.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+			<command name="Ellipse" icon="resources/icons/toolbar/annotation/circle.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+			<command name="Polygon" icon="resources/icons/toolbar/annotation/polygon.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+			<command name="Polyline" icon="resources/icons/toolbar/annotation/polyline.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+			<command name="Freehand curve" icon="resources/icons/toolbar/annotation/freehand.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+			<command name="Text" icon="resources/icons/toolbar/annotation/text.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+			<command name="Mark image" icon="resources/icons/toolbar/annotation/markImage.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+		</menu>
+		<menu name="Measurements">
+		  <command name="Pixel readout" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+		  <command name="Ruler" icon="resources/icons/toolbar/ruler.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+			<command name="Area" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+			<command name="Region histogram" icon="resources/icons/toolbar/histogram.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+		</menu>
+		<separator/>
+		<menu name="Plugins"/>
+	  <separator/>
+    <command name="Reset image" icon="resources/icons/toolbar/reset.png" toggleType="radiobutton" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+	</eventListener>
+</menu>

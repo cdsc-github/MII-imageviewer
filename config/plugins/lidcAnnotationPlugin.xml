@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<menu name="LIDC Annotation Viewer">
+	<eventListener class="imageviewer.tools.plugins.LIDCAnnotationTool">
+    <command name="Open LIDC study..." toggleType="radiobutton" useMenuIcon="false" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+		<separator/>
+		<command name="Show annotation overlay" toggleType="checkbox" isInitiallyEnabled="true" buttonGroup="" isDefault="true"/>
+  </eventListener>
+</menu>
+

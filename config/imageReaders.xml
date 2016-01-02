@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<imageReaders>
+  <reader fileType="DICOM" class="imageviewer.model.dicom.DICOMReader"/>
+  <reader fileType="Analyze 7.5" class="imageviewer.model.analyze.AnalyzeReader"/>
+  <reader fileType="Raw images" class="imageviewer.model.raw.RawImageReader"/>
+  <reader fileType="Visible Human" class = "imageviewer.model.vhd.VhdReader"/>
+</imageReaders>
+
+  

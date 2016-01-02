@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<menu name="Filters" shortcut="I">
+<!--  <eventListener class="imageviewer.tools.ToolManager"> -->
+	<command name="Gaussian blur" toggleType="none" isInitiallyEnabled="true" useMenuIcon="false" buttonGroup=""/>
+	<command name="Gradient magnitude" toggleType="none" isInitiallyEnabled="true" useMenuIcon="false" buttonGroup=""/>
+</menu>

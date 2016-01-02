@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<searchGroup>
+	<searchItem name="Imaging Modalities" type="list">
+	    <list>
+		<listItem value="CR"/>
+		<listItem value="CT"/>
+		<listItem value="DX"/>
+		<listItem value="HC"/>
+		<listItem value="HISTOPATHOLOGY"/>
+		<listItem value="Histopathology"/>
+		<listItem value="MR"/>
+		<listItem value="OT"/>
+		<listItem value="PT"/>
+		<listItem value="RTDOSE"/>
+		<listItem value="RESTRUCT"/>
+	    </list>
+	</searchItem>
+
+	<searchItem name="Contrast Enhanced" type="list">
+	    <list>
+	    	<listItem value="Enhanced" />
+	    	<listItem value="Un-enhanced" />
+	    	<listItem value="Both" />
+	    </list>
+	</searchItem>
+
+	<searchItem name="Anatomical Site" type="list">
+	    <list>
+		<listItem value="ABDOMEN"/>
+		<listItem value="BRAIN"/>
+		<listItem value="BRAIN WITH_WITH"/>
+		<listItem value="BREAST"/>
+		<listItem value="CHEST"/>
+		<listItem value="CHEST - PA AND L"/>
+		<listItem value="CHEST 1B"/>
+		<listItem value="CHEST ABDOMEN PE"/>
+		<listItem value="CT CEREBRUM"/>
+		<listItem value="CT CERERBRUM"/>
+		<listItem value="CT CHEST"/>
+		<listItem value="CT, CHEST, W CON"/>
+		<listItem value="CT_CHEST_WCON"/>
+		<listItem value="CT_CHEST_W_O C"/>
+		<listItem value="CT_CHEST_W CONTR"/>
+		<listItem value="E_1 MRI BRAIN"/>
+		<listItem value="HAND"/>
+		<listItem value="HEAD"/>
+		<listItem value="IP DYNAMIC ENHAN"/>
+		<listItem value="IR PERFUSION"/>
+		<listItem value="KNEE"/>
+		<listItem value="LUNG"/>
+		<listItem value="MRA BRAIN"/>
+		<listItem value="MRI BRAIN"/>
+		<listItem value="MRI BRAIN PERFUS"/>
+		<listItem value="NECK"/>
+		<listItem value="NONE"/>
+		<listItem value="NOT SPECIFIED"/>
+		<listItem value="PELVIS"/>
+		<listItem value="RECTUM"/>
+		<listItem value="RIB"/>
+		<listItem value="THORAX^1_ROUTINE"/>
+		<listItem value="THORAX^6_ROUTINE"/>
+		<listItem value="THORAX_1_ROUTINE"/>
+		<listItem value="THORAX_2_CAP_AD"/>
+		<listItem value="TRT PLANNING CHE"/>
+		<listItem value="TSPINE"/>
+		<listItem value="UNDEFINED"/>
+		<listItem value="UNKNOWN"/>
+	    </list>
+	</searchItem>
+
+	<searchItem name="Slice Thickness" type="range">
+		<parameter name="lowerThickness" type="float" value="0" measure="mm" />
+		<parameter name="upperThickness" type="float" value="8" measure="mm" />
+	</searchItem>
+
+	<searchItem name="Number of Previous Studies" type="int" startValue="0" minValue="0" maxValue="12" />
+
+	<searchItem name="Months between Baseline and Final Study" type="int" startValue="0" minValue="0" maxValue="120" />
+
+	<searchItem name="Collections" type="list">
+	    <list>
+		<listItem value="CT Colonography"/>
+		<listItem value="LIDC"/>
+		<listItem value="NCRI"/>
+		<listItem value="Phantom"/>
+		<listItem value="Phantom-FDA"/>
+		<listItem value="RIDER"/>
+		<listItem value="RoswellStrong"/>
+		<listItem value="Virtual Colonoscopy"/>
+	    </list>
+	</searchItem>
+
+	<searchItem name="Annotated" type="list">
+	    <list>
+	    	<listItem value="Annotated" />
+	    	<listItem value="Not Annotated" />
+	    	<listItem value="Both" />
+	    </list>
+	</searchItem>
+
+	<searchItem name="Date Available" type="date">
+		<parameter name="From" type="date"/>
+		<parameter name="To" type="date"/>
+	</searchItem>
+</searchGroup>

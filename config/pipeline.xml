@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<pipeline name="default">
+  <operation name="flip" className="imageviewer.rendering.RenderedOperationFlip"/>
+  <operation name="rotation" className="imageviewer.rendering.RenderedOperationRotation"/>
+  <operation name="affineTransform" className="imageviewer.rendering.RenderedOperationAffineTransform"/>  <!-- Includes scaling, translation -->
+  <operation name="windowLevel" className="imageviewer.rendering.RenderedOperationWindowLevel"/>
+</pipeline>
+
+  

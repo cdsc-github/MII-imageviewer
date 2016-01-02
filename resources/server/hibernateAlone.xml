@@ -1,0 +1,80 @@
+<!DOCTYPE hibernate-configuration PUBLIC 
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+    
+    
+       	<!-- undelete if you'd like to update your schema -->
+				<!--<property name="hibernate.hbm2ddl.auto">create</property>-->
+		    <property name="hibernate.connection.shutdown">true</property>
+		    
+		    
+        <!-- Settings for a local HSQL (testing) database. -->
+        <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+        <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+        <!--
+           file-based connection 
+        <property name="connection.url">jdbc:hsqldb:file:ImageServer</property>
+        -->          
+        <property name="connection.url">jdbc:hsqldb:hsql://localhost:9001/ImageServer</property>
+        <property name="connection.username">sa</property>
+        <property name="connection.password"></property>
+
+        <!-- Use the C3P0 connection pool. -->
+        <property name="c3p0.min_size">3</property>
+        <property name="c3p0.max_size">5</property>
+        <property name="c3p0.timeout">1800</property>
+    
+	  		<!-- second-level cache. -->
+	  		<!--<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>-->
+		  	<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+		  	<property name="cache.use_query_cache">false</property>
+			  <property name="cache.use_minimal_puts">false</property>
+			  <property name="max_fetch_depth">3</property>
+
+        <property name="jdbc.batch_size">50</property>
+    
+        <!-- Print SQL to stdout. -->
+        <property name="show_sql">false</property>
+        <property name="format_sql">false</property>
+        
+        <!-- Bind the getCurrentSession() method to the thread. -->
+        <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+        <property name="current_session_context_class">thread</property>
+
+
+        <!-- Hibernate XML mapping files -->
+        
+  <mapping resource="imageserver/archive/eav/EavDate.hbm.xml"/>
+	<mapping resource="imageserver/archive/eav/EavStringShort.hbm.xml"/>
+	<mapping resource="imageserver/archive/eav/EavDouble.hbm.xml"/>
+	<mapping resource="imageserver/archive/eav/EavFloat.hbm.xml"/>
+	<mapping resource="imageserver/archive/eav/MetaOfAttributes.hbm.xml"/>
+	<mapping resource="imageserver/archive/eav/EavStringLong.hbm.xml"/>
+	<mapping resource="imageserver/archive/eav/EavInt.hbm.xml"/>
+	<mapping resource="imageserver/archive/eav/EavBoolean.hbm.xml"/>	
+	<mapping resource="imageserver/archive/eav/EavShort.hbm.xml"/>	
+	<mapping resource="imageserver/archive/eav/EavSet.hbm.xml"/>	
+	<mapping resource="imageserver/archive/eav/EavArray.hbm.xml"/>	
+	<mapping resource="imageserver/archive/eav/EavArrayElement.hbm.xml"/>	
+	<mapping resource="imageserver/archive/eav/Collection.hbm.xml"/>	
+	<mapping resource="imageserver/archive/eav/EavMap.hbm.xml"/>	
+	<mapping resource="imageserver/archive/eav/EavMapEntry.hbm.xml"/>		
+	
+	
+		  
+  <!-- DICOM Image Stuff -->
+ 	<mapping resource="imageserver/model/AssociatedData.hbm.xml"/>
+	<mapping resource="imageserver/model/Study.hbm.xml"/>	
+	<mapping resource="imageserver/model/ImageInstance.hbm.xml"/>
+	<mapping resource="imageserver/model/Series.hbm.xml"/>
+	<mapping resource="imageserver/model/Patient.hbm.xml"/>
+
+	<mapping resource="imageserver/model/ImageCollection.hbm.xml"/>
+	<mapping resource="imageserver/model/AssociatedDataCollection.hbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>

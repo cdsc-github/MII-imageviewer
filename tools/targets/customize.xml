@@ -1,0 +1,385 @@
+
+	<!-- ================================== -->
+	<!--     GET COMPUTER NAME              -->
+	<!-- ================================== -->
+	<!--
+		interesting, i was importing ConfigWriter here and not using it, and
+		it was a mistyped package, and Windows did not complain but Unix did.
+	-->
+<target name="machine.setup">
+	<script language="beanshell"><![CDATA[
+     import utility.java.Environment;   
+     String computerName=Environment.getComputerName().toLowerCase();
+     if (computerName != null) {
+       ImageViewer.setProperty("default.node.name",computerName);
+       String defaultAETitle=computerName.toUpperCase();
+       ImageViewer.setProperty("default.node.aetitle",defaultAETitle);
+     }
+  ]]></script>
+	<fail unless="default.node.name">Unable to get the name configured for this computer.</fail>
+	<echo>Default computer NAME is ${default.node.name}.</echo>
+</target>
+
+
+	<!-- ================================== -->
+	<!--     WHAT OPERATING SYSTEM          -->
+	<!-- ================================== -->
+<target name="get.os" depends="machine.setup">
+	<condition property="isunix">
+		<equals arg1=":" arg2="${path.separator}" />
+	</condition>
+	<condition property="iswin">
+		<equals arg1=";" arg2="${path.separator}" />
+	</condition>
+</target>
+
+
+	<!-- ================================= -->
+	<!--     SET UP DEFAULTS               -->
+	<!-- ================================= -->
+<target name="config.defaults" depends="get.os">
+	<delete file="tools/setup.xml" />
+	<filter token="default.node.name" value="${default.node.name}" />
+	<filter token="default.node.aetitle" value="${default.node.aetitle}" />
+	<filter token="default.image.dir" value="./images" />
+	<filter token="default.file.extension" value=".dcm" />
+	<filter token="default.local.archive.port" value="5050" />
+	<filter token="default.pacs.cluster" value="DICOM" />
+	<filter token="default.gateway.port" value="8080" />
+	<copy file="tools/setup.xml.template" tofile="tools/setup.xml"
+		filtering="true" />
+</target>
+
+
+	<!-- ================================= -->
+	<!--       GUI SETUP                   -->
+	<!-- ================================= -->
+
+<target name="config.win.settings" depends="config.defaults" if="iswin">
+	<exec executable="cmd.exe">
+		<arg line="/K tools\setup.bat tools\setup.xml tools" />
+	</exec>
+</target>
+
+
+<target name="config.unix.settings" depends="config.defaults" if="isunix">
+	<exec executable="/bin/sh">
+		<arg line='-c "./tools/setup.sh tools/setup.xml tools"' />
+	</exec>
+</target>
+
+
+	<!-- ================================= -->
+	<!--         GUI ERROR                 -->
+	<!-- ================================= -->
+<target name="settings.fail" depends="config.win.settings,config.unix.settings">
+	<available file="tools/setup.properties" property="props.available" />
+	<fail unless="props.available">tools/setup.properties was not found.</fail>
+	<property file="tools/setup.properties" />
+	<!-- how do i fail on node.name just blank?  -->
+	<condition property="fail1">
+		<equals arg1="" arg2="${node.name}" />
+	</condition>
+	<fail if="fail1">Node name was not set.</fail>
+	<condition property="fail2">
+		<equals arg1="" arg2="${set.display.name}" />
+	</condition>
+	<fail if="fail2">Display name was not set.</fail>
+	<condition property="fail3">
+		<equals arg1="" arg2="${storage.directory}" />
+	</condition>
+	<fail if="fail3">Storage directory was not set.</fail>
+	<condition property="fail4">
+		<equals arg1="" arg2="${local.archive.port}" />
+	</condition>
+	<fail if="fail4">Local archive port number was not set.</fail>
+	<condition property="fail5">
+		<equals arg1="" arg2="${cluster.name}" />
+	</condition>
+	<fail if="fail5">The cluster name was not set.</fail>
+	<condition property="fail6">
+		<equals arg1="" arg2="${gateway.ipaddress}" />
+	</condition>
+	<fail if="fail6">The gateway IP address was not set.</fail>
+	<condition property="fail7">
+		<equals arg1="" arg2="${gateway.port}" />
+	</condition>
+	<fail if="fail7">The gateway port number was not set.</fail>
+</target>
+
+
+	<!-- =============================================== -->
+	<!-- Do NSLOOKUP and generate nodename.properties    -->
+	<!-- =============================================== -->
+<target name="set.node.name" depends="settings.fail">
+	<exec dir="." executable="nslookup" outputproperty="node.nslookup.result">   <!-- Get host name/IP address for this node -->
+		<arg value="${node.name}" />
+	</exec>
+	<script language="beanshell">   <!-- This requires bsf.jar, ant-apache-bsf.jar, and a bsh jar. -->
+    <![CDATA[
+      String nslookups=ImageViewer.getProperty("node.nslookup.result");
+      String[] firstsplit=nslookups.split("Name:",2);
+      PrintWriter pw=null;
+      try {
+        if (firstsplit.length==2) {
+          String[] secondsplit=firstsplit[1].split("Address:");
+          String host=secondsplit[0].trim();
+          String hostip=secondsplit[1].trim();
+          ImageViewer.setProperty("lookup.node.succeed","yes");
+          ImageViewer.setProperty("entry.key.host",host);
+          ImageViewer.setProperty("node.ipaddress",hostip);
+	  pw = new PrintWriter((new File("./config/nodename.properties")));
+	  pw.println("node.name="+(String)ImageViewer.getProperty("node.name"));
+	  pw.flush();
+	  pw.close();
+        } else {
+          StringBuffer errorBuffer = new StringBuffer("Sorry, unable to read the response to nslookup command.");
+          errorBuffer.append("firstsplit.length = "+firstsplit.length+"\n");
+	  for (int i=0; i<firstsplit.length; i++) {
+            errorBuffer.append("firstsplit["+i+"]:"+firstsplit[i]+"\n");
+	  }
+          ImageViewer.setProperty("nslookup.error",errorBuffer.toString());
+        }
+      } catch (Exception ex) {
+        ImageViewer.setProperty("nslookup.error",ex.getMessage());
+        ImageViewer.setProperty("lookup.node.succeed","no");
+      }
+    ]]>
+	</script>
+	<fail if="nslookup.error">Unable to do nslookup for ${node.name}. NSLOOKUP result
+		is ${node.nslookup.result}.</fail>
+
+</target>
+
+
+	<!-- ============= SET UP CONFIG FILES ============ -->
+
+<target name="find.config.xml" depends="set.node.name">
+	<available file="config/config.xml" property="config.exists" />
+</target>
+
+
+<target name="delete.old.config" if="config.exists" depends="find.config.xml">
+	<delete file="config/config.xml" />
+</target>
+
+
+<target name="gen.config.xml" depends="delete.old.config">
+	<script language="beanshell"><![CDATA[
+     import java.io.File;
+     import java.io.FileInputStream;
+     import java.io.InputStream;
+     import utility.tools.ConfigWriter;
+
+     File f1 = new File("config/default.config.xml.template");
+     if (!f1.exists()) {
+         ImageViewer.setProperty("no.default.template",true);
+         return;
+     }
+     File f2 = new File("config/default.config.properties.xml");
+     if (!f2.exists()) {
+         ImageViewer.setProperty("no.default.config",true);
+         return;
+     }
+     InputStream defaultPropsIS=new FileInputStream(f2);
+     Properties defaultProperties = new Properties();
+     defaultProperties.loadFromXML(defaultPropsIS);
+
+     ConfigWriter cw = null;
+     try {
+        new ConfigWriter("config/default.config.xml.template",defaultProperties,"default.config.xml");
+     } catch (Exception ex) {
+        ImageViewer.setProperty("config.xml.write.fail",ex.getMessage());
+     }
+
+  ]]></script>
+
+	<fail if="no.default.template">The file config/default.config.xml.template was not
+		found.</fail>
+	<fail if="no.default.config">The file config/default.config.properties.xml was not
+		found.</fail>
+	<fail if="config.xml.write.fail">Unable to write config/config.xml:
+		${config.xml.write.fail}</fail>
+	<replace file="config/default.config.xml" token="@IMAGESERVER_GATEWAY_CONFIG@"
+		value="${node.name}GatewayConfig.xml" />
+	<replace file="config/default.config.xml" token="@IMAGESERVER_CLIENT_NODE@"
+		value="${node.name}NodeConfig.xml" />
+	<echo>Writing ./config/config.xml...</echo>
+	<copy file="config/default.config.xml" tofile="config/config.xml" />
+</target>
+
+
+
+<target name="write-node-config" depends="set.node.name,gen.config.xml"
+	description="* Write local archive node configuration.">
+	<property name="node.config.file" value="${node.name}NodeConfig.xml" />
+	<script language="beanshell">
+		<![CDATA[
+      PrintWriter pw=null;            
+      File outDir=new File("./resources/server");
+      String filename=(String)ImageViewer.getProperty("node.config.file");
+      File nodeConfigFile=new File(outDir,filename);
+      try {
+	      System.out.println("Writing "+nodeConfigFile.toString()+"...");
+	      pw=new PrintWriter(nodeConfigFile);
+        pw.println("<?xml version='1.0' encoding='UTF-8' ?>");
+        pw.println("<!DOCTYPE properties SYSTEM 'http://java.sun.com/dtd/properties.dtd'>");
+        pw.println("<properties>");
+        pw.println("<comment>Client node properties</comment>");
+        pw.println("<entry key='headerFileExt'>"+(String)ImageViewer.getProperty("file.extension")+"</entry>");
+        pw.println("<entry key='archiveHibernateFile'>resources/server/hibernateAlone.xml</entry>");
+        pw.println("<entry key='outDir'>"+(String)ImageViewer.getProperty("storage.directory")+"</entry>");
+        pw.println("<entry key='port'>"+(String)ImageViewer.getProperty("local.archive.port")+"</entry>");
+        pw.println("<entry key='headerPath'>patientid/studyinstuid/seriesinstuid/image_inst_no</entry>");
+        pw.println("<entry key='host'>"+(String)ImageViewer.getProperty("entry.key.host")+"</entry>");
+        pw.println("<entry key='hsqldbProperties'>resources/server/server</entry>");
+        pw.println("</properties>");
+        pw.flush(); 
+        pw.close();
+      } catch (Exception ex) {
+        ImageViewer.setProperty("node.config.write.failed","yes");
+      }
+     ]]>
+	</script>
+	<condition property="abort3">
+		<equals arg1="${node.config.write.failed}" arg2="yes" />
+	</condition>
+	<fail if="abort3">Unable to write node config file ${node.file}.</fail>
+</target>
+
+
+	<!-- ================ DO NSLOOKUP ================= -->
+<target name="set.gateway.ip" depends="set.node.name">
+	<exec dir="." executable="nslookup" outputproperty="gateway.nslookup.result">   <!-- Verify IP address for gateway. -->
+		<arg value="${gateway.ipaddress}" />
+	</exec>
+	<script language="beanshell">  <!-- This requires bsf.jar, ant-apache-bsf.jar, and a bsh jar. -->
+	<![CDATA[
+      String nslookups=ImageViewer.getProperty("gateway.nslookup.result");
+      String[] firstsplit=nslookups.split("Name:",2);
+      try {
+        if (firstsplit.length==2) {
+           String[] secondsplit=firstsplit[1].split("Address:");
+           String gatewayname=secondsplit[0].trim();
+           String gatewayip=secondsplit[1].trim();
+           ImageViewer.setProperty("lookup.gateway.succeed","yes");
+        }  else {
+           StringBuffer errorBuffer = new StringBuffer("Sorry, unable to read the response to nslookup command.");
+           errorBuffer.append("firstsplit.length = "+firstsplit.length+"\n");
+	   for (int i=0; i<firstsplit.length; i++) {
+             errorBuffer.append("firstsplit["+i+"]:"+firstsplit[i]+"\n");
+	   }
+           ImageViewer.setProperty("gateway.nslookup.error",errorBuffer.toString());
+        }
+      } catch (Exception ex) {
+         ImageViewer.setProperty("gateway.nslookup.error",ex.getMessage());
+         ImageViewer.setProperty("lookup.gateway.succeed","no");
+      }
+    ]]>
+	</script>
+	<fail if="gateway.nslookup.error">Unable to do nslookup for ${gateway.ipaddress}. NSLOOKUP
+		result is ${gateway.nslookup.result}.</fail>
+</target>
+
+
+
+
+<target name="write-gateway-config" depends="set.node.name,set.gateway.ip,gen.config.xml"
+	unless="gateway.config.available" description="* Write configuration file for the openPACS gateway.">
+
+	<property name="gateway.config.file" value="${node.name}GatewayConfig.xml" />
+	<script language="beanshell">
+		<![CDATA[
+      PrintWriter pw=null;            
+      File outDir=new File("./resources/server");
+      String filename=(String)ImageViewer.getProperty("gateway.config.file");
+      File gatewayConfigFile=new File(outDir,filename);
+      try {
+	      String nodeName=(String)ImageViewer.getProperty("default.node.name");
+        File gatewayConfigFile=new File(outDir,nodeName+"GatewayConfig.xml");
+        ImageViewer.setProperty("gateway.file",gatewayConfigFile.toString());
+	      System.out.println("Writing "+gatewayConfigFile.toString()+"...");
+	      pw=new PrintWriter(gatewayConfigFile);
+        pw.println("<?xml version='1.0' encoding='UTF-8'?>");
+        pw.println("");
+        pw.println("<!-- This is what a typical client node appearing on the scene would know -->");
+        pw.println("");
+        pw.println("<clientConfig>");
+        String gatewayip=" ipAddress=\""+(String)ImageViewer.getProperty("gateway.ipaddress")+"\"";
+	      String gatewayport=" port=\""+(String)ImageViewer.getProperty("gateway.port")+"\"";
+	      pw.println("<gateway "+gatewayip+gatewayport+"/>");
+	      String clustername=" name=\""+(String)ImageViewer.getProperty("cluster.name")+"\"";
+        pw.println("<cluster "+clustername+" >");
+        String name=" name=\""+(String)ImageViewer.getProperty("node.name")+"\"";           
+        String displayName=" displayName=\""+(String)ImageViewer.getProperty("display.name")+"\"";
+        String ipAddress=" ipAddress=\""+(String)ImageViewer.getProperty("node.ipaddress")+"\"";
+        String port=" port=\""+(String)ImageViewer.getProperty("local.archive.port")+"\"";
+        String aeTitle=" aeTitle=\""+(String)ImageViewer.getProperty("node.aetitle")+"\"";
+        String concurrency=" concurrency=\"1\"";
+        String retry=" retry=\"\"";
+        String url=" url=\"\"";  
+        pw.println("<addPACSNode"+name+displayName+ipAddress+aeTitle+port+concurrency+url+retry+" >");
+        String canMove=(String)ImageViewer.getProperty("node.can.move").trim();
+        if ("y".equals(canMove)) {
+	        pw.println("<capability name='move' functionGroup='socket'/>");
+	      }
+        String canEcho=(String)ImageViewer.getProperty("node.can.echo").trim();
+	      if ("y".equals(canEcho)) {
+	        pw.println("<capability name='echo' functionGroup='socket'/>");
+        }
+        String canMoveTarget=(String)ImageViewer.getProperty("node.can.movetarget").trim();
+        if ("y".equals(canMoveTarget)) {
+	        pw.println("<capability name='moveTarget' functionGroup='socket'/>");
+        }
+	      String canMoveSource=(String)ImageViewer.getProperty("node.can.movesource").trim();
+	      if ("y".equals(canMoveSource)) {
+	        pw.println("<capability name='moveSource' functionGroup='socket'/>");
+        }
+        pw.println("</addPACSNode>");
+	      pw.println("</cluster>");
+        pw.println("</clientConfig>");
+	      pw.flush();
+	      pw.close();      
+      } catch (Exception ex) {
+        ImageViewer.setProperty("gateway.config.write.failed","yes");
+      }     
+    ]]>
+	</script>
+	<condition property="abort3">
+		<equals arg1="${gateway.config.write.failed}" arg2="yes" />
+	</condition>
+	<fail if="abort3">Unable to write gateway config file ${gateway.file}.</fail>
+</target>
+
+<target name="config"
+	depends="write-node-config,write-gateway-config,gen.config.xml"
+	description="Write ALL configuration files for the node name specified." />
+
+	<!-- ====================================== -->
+	<!--           CLEAN HOUSE                  -->
+	<!-- ====================================== -->
+
+<target name="get.node.name">
+	<available property="node.props.avail" file="config/nodename.properties" />
+	<fail unless="node.props.avail">config/nodename.properties file is missing.</fail>
+	<property file="config/nodename.properties" />
+</target>
+
+
+<target name="clean.node.config" depends="get.node.name">
+	<delete file="resources/server/${node.name}NodeConfig.xml" />
+</target>
+
+
+<target name="clean.gateway.config" depends="get.node.name">
+	<delete file="resources/server/${node.name}GatewayConfig.xml" />
+</target>
+
+
+<target name="clean-configs"
+	depends="get.node.name,clean.node.config,clean.gateway.config"
+	description="Delete ALL configuration files for the node name specified.">
+	<delete file="config/config.xml" />
+	<delete file="config/default.config.xml" />
+	<delete file="config/nodename.properties" />
+</target>

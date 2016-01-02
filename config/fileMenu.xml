@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<menu name="File" shortcut="F">
+  <command name="Open" icon="resources/icons/toolbar/open.png" shortcut="ctrl O" toggleType="none" isInitiallyEnabled="true" buttonGroup=""/>
+	<separator/>
+	<command name="Close" toggleType="none" isInitiallyEnabled="false" buttonGroup=""/>
+	<command name="Close all" toggleType="none" isInitiallyEnabled="false" buttonGroup=""/>
+	<separator/>
+	<command name="Save" icon="resources/icons/toolbar/save.png" shortcut="ctrl S" toggleType="none" isInitiallyEnabled="false" buttonGroup=""/>
+	<separator/>
+  <eventListener class="imageviewer.ui.UserManager">
+	  <command name="Login" toggleType="none" isInitiallyEnabled="true" buttonGroup=""/>
+	  <command name="Logout" toggleType="none" isInitiallyEnabled="false" buttonGroup=""/>
+  </eventListener>
+	<separator/>
+	<command name="Quit" toggleType="none" isInitiallyEnabled="true" buttonGroup=""/>
+</menu>

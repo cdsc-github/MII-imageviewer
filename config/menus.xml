@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<menus>
+  <file filename="config/fileMenu.xml"/>
+	<menu name="Edit" shortcut="E">
+	  <command name="Undo" icon="resources/icons/toolbar/undo.png" shortcut="ctrl Z" toggleType="none" isInitiallyEnabled="false" useMenuIcon="false" buttonGroup=""/>
+	  <command name="Redo" icon="resources/icons/toolbar/redo.png" shortcut="ctrl Y" toggleType="none" isInitiallyEnabled="false" useMenuIcon="false" buttonGroup=""/>
+		<separator/>
+	  <command name="Cut" icon="resources/icons/toolbar/cut.png" shortcut="ctrl X" toggleType="none" isInitiallyEnabled="false" buttonGroup=""/>
+	  <command name="Copy" icon="resources/icons/toolbar/copy.png" shortcut="ctrl C" toggleType="none" isInitiallyEnabled="false" buttonGroup=""/>
+	  <command name="Paste" icon="resources/icons/toolbar/paste.png" shortcut="ctrl V" toggleType="none" isInitiallyEnabled="false" buttonGroup=""/>
+	  <separator/>
+		<command name="Select all" shortcut="ctrl A" toggleType="none" isInitiallyEnabled="true" buttonGroup=""/>
+	  <separator/>
+		<command name="Preferences" toggleType="none" shortcut="ctrl P" isInitiallyEnabled="true" buttonGroup=""/>
+	</menu>
+	<menu name="View" shortcut="V">
+	  <eventListener class="imageviewer.ui.ViewManager">
+	    <menu name="Layouts">
+		    <command name="Single tile" icon="resources/icons/toolbar/layout/singleTileLayout.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="false" buttonGroup="layout"/>
+				<command name="Large grid" icon="resources/icons/toolbar/layout/largeGridLayout.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="false" buttonGroup="layout"/>
+				<command name="Small grid" icon="resources/icons/toolbar/layout/smallGridLayout.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="false" buttonGroup="layout"/>
+				<separator/>
+				<command name="Continuous overview" icon="resources/icons/toolbar/layout/continuousOverview.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="false" buttonGroup="layout"/>
+				<command name="Large overview" icon="resources/icons/toolbar/layout/largeOverview.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="false" buttonGroup="layout"/>
+				<command name="Small overview" icon="resources/icons/toolbar/layout/smallOverview.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="false" buttonGroup="layout"/>
+				<separator/>
+				<command name="Multi overview" icon="resources/icons/toolbar/layout/multiOverview.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="false" buttonGroup="layout"/>
+			</menu>
+			<separator/>
+			<command name="3D viewer"  icon="resources/icons/toolsbar/3d.png" toggleType="checkbox" isInitiallyEnabled="false" buttonGroup="3d"/>
+			<separator/>
+			<command name="Display image information" toggleType="checkbox" isInitiallyEnabled="true" buttonGroup=""/>
+			<command name="Display image property window" toggleType="checkbox" shortcut="ctrl I" isInitiallyEnabled="true" buttonGroup=""/>
+			<command name="Display presentation states" icon="resources/icons/toolbar/camera.png" toggleType="checkbox" isInitiallyEnabled="true" useMenuIcon="false" buttonGroup=""/>
+			<separator/>
+			<command name="Display grid" useMenuIcon="false" toggleType="checkbox" isInitiallyEnabled="true" buttonGroup=""/>
+			<command name="Display partial panels" toggleType="checkbox" isInitiallyEnabled="true" buttonGroup=""/>
+	  </eventListener>
+	</menu>
+	<menu name="Format" shortcut="O">
+	  <menu name="Color">
+		  <command name="Red" icon="resources/icons/toolbar/colors/red.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="true" buttonGroup="color"/>
+			<command name="Orange" icon="resources/icons/toolbar/colors/orange.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="true" buttonGroup="color"/>
+			<command name="Yellow" icon="resources/icons/toolbar/colors/yellow.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="true" buttonGroup="color"/>
+			<command name="Green" icon="resources/icons/toolbar/colors/green.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="true" buttonGroup="color"/>
+			<command name="Blue" icon="resources/icons/toolbar/colors/blue.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="true" buttonGroup="color"/>
+			<command name="Indigo" icon="resources/icons/toolbar/colors/indigo.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="true" buttonGroup="color"/>
+			<command name="Violet" icon="resources/icons/toolbar/colors/violet.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="true" buttonGroup="color"/>
+			<command name="White" icon="resources/icons/toolbar/colors/white.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="true" buttonGroup="color"/>
+			<command name="Gray" icon="resources/icons/toolbar/colors/gray.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="true" buttonGroup="color"/>
+			<command name="Black" icon="resources/icons/toolbar/colors/black.png" toggleType="radiobutton" isInitiallyEnabled="true" useMenuIcon="true" buttonGroup="color"/>
+		</menu>
+	</menu>
+  <file filename="config/toolsMenu.xml"/>
+  <file filename="config/filtersMenu.xml"/>
+</menus>

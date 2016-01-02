@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<windowLevelDescriptions>  
+  <windowLevel name="CT_HEAD"    modality="CT" anatomy="BRAIN"   window="120"  level="40"/>   
+  <windowLevel name="CT_CHEST"   modality="CT" anatomy="CHEST"   window="1500" level="600"/>
+  <windowLevel name="CT_ABDOMEN" modality="CT" anatomy="ABDOMEN" window="2560" level="300"/>
+  <windowLevel name="CT_LUNG"    modality="CT" anatomy="LUNG"    window="1500" level="-600"/>
+  <windowLevel name="CT_BONE"    modality="CT" anatomy="BONE"    window="2560" level="480"/> 
+  <windowLevel name="MR_BRAIN"   modality="MR" anatomy="BRAIN"   window="70"   level="50" algorithmClass="imageviewer.rendering.wl.SimpleMRWindowLevel"/>
+	<windowLevel name="MR"	       modality="MR" anatomy="*"	     window="70"   level="50" algorithmClass="imageviewer.rendering.wl.SimpleMRWindowLevel"/>
+  <windowLevel name="CR_LUNG"    modality="CR" anatomy="LUNG"    window="600"  level="400" />
+  <windowLevel name="CR_THORAX"	 modality="CR" anatomy="*"			 window="350"  level="1100" />
+</windowLevelDescriptions>

@@ -1,1 +1,1 @@
-# MII-imageviewer
+# imageviewer

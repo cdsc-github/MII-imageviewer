@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout name="Large grid" resolutionWidth="1400" resolutionHeight="1050">
+  <renderingPipeline name="default"/>
+  <controlGroup id="1" x="0" y="0" type="imageviewer.ui.image.ImagePanelGroup" target="PRIMARY">
+		<groupProperty name="headerTL" value="false"/>
+		<groupProperty name="headerTR" value="true"/>
+		<groupProperty name="headerBL" value="false"/>
+		<groupProperty name="headerBR" value="false"/>
+	  <panel x="0" y="0" width="512" height="512"/>
+	  <panel x="512" y="0" width="512" height="512"/>
+	  <panel x="0" y="512" width="512" height="512"/>
+	  <panel x="512" y="512" width="512" height="512"/>
+	</controlGroup>
+</layout>

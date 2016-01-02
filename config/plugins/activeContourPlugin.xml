@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<menu name="Active contours">
+	<eventListener class="imageviewer.tools.plugins.ActiveContourTool">
+    <command name="Draw active contour" toggleType="radiobutton" useMenuIcon="false" isInitiallyEnabled="true" buttonGroup="imageTools"/>
+		<separator/>
+		<command name="Stroke region" toggleType="checkbox" isInitiallyEnabled="true" buttonGroup="" isDefault="true"/>
+		<command name="Fill region" toggleType="checkbox" isInitiallyEnabled="true" buttonGroup=""/>
+		<separator/>
+		<command name="Draw iterations" toggleType="checkbox" isInitiallyEnabled="true" buttonGroup=""/>
+		<command name="Draw final normals" toggleType="checkbox" isInitiallyEnabled="true" buttonGroup=""/>
+  </eventListener>
+</menu>
+

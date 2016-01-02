@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>blah blah</comment>
+<entry key="MEMORY_THRESHOLD">0.7</entry>
+<entry key="MAXIMUM_MEMORY_THRESHOLD">0.8</entry>
+<entry key="DEFAULT_IMAGE_CACHE_SIZE">256</entry>
+<entry key="UNDO_LEVEL">15</entry>
+<entry key="DISPLAY_PARTIAL_PANELS">true</entry>
+
+<entry key="IMAGESERVER_GATEWAY_CONFIG">resources/server/@IMAGESERVER_GATEWAY_CONFIG@</entry>
+<entry key="IMAGESERVER_CLIENT_NODE">resources/server/@IMAGESERVER_CLIENT_NODE@</entry>
+<entry key="LOCAL_ARCHIVE_UPDATE_PATH"></entry>
+<entry key="USE_XML_COMPRESSION">true</entry>
+<entry key="USE_IMAGE_COMPRESSION">true</entry>
+
+<entry key="CONFIG_LAYOUTS">config/layouts.xml</entry>
+<entry key="CONFIG_MENUS">config/menus.xml</entry>
+<entry key="CONFIG_PIPELINE">config/pipeline.xml</entry>
+<entry key="CONFIG_PLUGINS">config/plugins.xml</entry>
+<entry key="CONFIG_TOOLBAR">config/toolbar.xml</entry>
+<entry key="CONFIG_WINDOW_LEVEL">config/windowLevel.xml</entry>
+
+<entry key="PLUGIN_CONFIG_ACTIVE_CONTOUR">config/plugins/activeContourPlugin.xml</entry>
+<entry key="PLUGIN_CONFIG_MAGIC_WAND">config/plugins/magicWandPlugin.xml</entry>
+
+<entry key="DISPLAY_GRID">false</entry>
+<entry key="DISPLAY_IMAGE_INFORMATION">true</entry>
+<entry key="DISPLAY_IMAGE_PROP_WINDOW">false</entry>
+
+</properties>

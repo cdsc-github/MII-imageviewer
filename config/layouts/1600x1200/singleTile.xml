@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout name="Single tile" resolutionWidth="1600" resolutionHeight="1200">
+  <renderingPipeline name="default"/>
+  <controlGroup id="1" x="0" y="0" type="imageviewer.ui.image.ImagePanelGroup" target="PRIMARY">
+	  <groupProperty name="headerTL" value="false"/>
+		<groupProperty name="headerTR" value="true"/>
+		<groupProperty name="headerBL" value="false"/>
+		<groupProperty name="headerBR" value="false"/>
+		<panel x="0" y="0" width="1024" height="1024"/>
+	</controlGroup>
+</layout>

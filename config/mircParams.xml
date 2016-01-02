@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<searchGroup>
+  <searchItem name="free text search" type="text"/>
+  <searchItem name="title" type="text"/>
+  <searchItem name="author" type="text"/>
+  <searchItem name="abstract" type="text"/>
+  <searchItem name="keywords" type="text"/>
+  <searchItem name="document-type" type="list">
+		<list>
+			<listItem value="Radiologic Teaching File"/>
+			<listItem value="Radiologic Collection"/>
+			<listItem value="Research Dataset"/>
+			<listItem value="Educational Document"/>
+			<listItem value="Technical Document"/>
+		</list>
+  </searchItem>
+
+  <searchItem name="category" type="list">
+		<list>
+			<listItem value="Musculoskeletal"/>
+			<listItem value="Pulmonary"/>
+			<listItem value="Cardiovascular"/>
+			<listItem value="Gastrointestinal"/>
+			<listItem value="Genitourinary"/>
+			<listItem value="Neuro"/>
+			<listItem value="Vascular or Interventional"/>
+			<listItem value="Nuclear"/>
+			<listItem value="Ultrasound"/>
+			<listItem value="Pediatric"/>
+			<listItem value="Breast"/>
+		</list>
+  </searchItem>
+
+  <searchItem name="level" type="list">
+		<list>
+			<listItem value="Primary"/>
+			<listItem value="Intermediate"/>
+			<listItem value="Advanced"/>
+		</list>
+  </searchItem>
+
+  <searchItem name="access" type="list">
+		<list>
+			<listItem value="Public"/>
+			<listItem value="Restricted"/>
+			<listItem value="Private"/>
+		</list>
+  </searchItem>
+
+  <searchItem name="history" type="text"/>
+  <searchItem name="findings" type="text"/>
+  <searchItem name="diagnosis" type="text"/>
+  <searchItem name="differential-diagnosis" type="text"/>
+  <searchItem name="discussion" type="text"/>
+  <searchItem name="anatomy" type="text"/>
+  <searchItem name="pathology" type="text"/>
+  <searchItem name="organ-system" type="text"/>
+  <searchItem name="modality" type="text"/>
+
+  <searchItem name="image:format" type="list">
+		<list>
+			<listItem value="DICOM"/>
+			<listItem value="JPG"/>
+			<listItem value="GIF"/>
+			<listItem value="PNG"/>
+		</list>
+  </searchItem>
+
+  <searchItem name="image:compression" type="list">
+		<list>
+			<listItem value="Original"/>
+			<listItem value="Reversible"/>
+			<listItem value="Non-Reversible"/>
+		</list>
+  </searchItem>
+
+	<searchItem name="image:modality" type="text"/>
+	<searchItem name="image:anatomy" type="text"/>
+	<searchItem name="image:pathology" type="text"/>
+
+	<searchItem name="patient:pt-sex" type="list">
+	  <list>
+	    <listItem value="male"/>
+	    <listItem value="female"/>
+	  </list>
+	</searchItem>
+
+	<searchItem name="patient:pt-race" type="text"/>
+	<searchItem name="patient:pt-age:years" type="text"/>
+	<searchItem name="patient:pt-age:months" type="text"/>
+	<searchItem name="patient:pt-age:weeks" type="text"/>
+	<searchItem name="patient:pt-age:days" type="text"/>
+</searchGroup>
